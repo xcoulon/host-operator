@@ -55,6 +55,8 @@ type Reconciler struct {
 //+kubebuilder:rbac:groups=toolchain.dev.openshift.com,resources=toolchainconfigs,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=toolchain.dev.openshift.com,resources=toolchainconfigs/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=toolchain.dev.openshift.com,resources=toolchainconfigs/finalizers,verbs=update
+//+kubebuilder:rbac:groups=toolchain.dev.openshift.com,resources=toolchainconfigs/finalizers,verbs=update
+//+kubebuilder:rbac:groups=config.openshift.io,resources=clusterversions,verbs=get;list
 
 // Reconcile reads that state of the cluster for a ToolchainConfig object and makes changes based on the state read
 // and what is in the ToolchainConfig.Spec

@@ -91,6 +91,9 @@ spec:
                   buildTimestamp:
                     description: The timestamp of the host operator build
                     type: string
+                  clusterVersion:
+                    description: The version of the OpenShift cluster
+                    type: string
                   conditions:
                     description: 'Conditions is an array of current host operator
                       status conditions Supported condition types: ConditionReady'
@@ -331,6 +334,9 @@ spec:
                           properties:
                             buildTimestamp:
                               description: The timestamp of the member operator build
+                              type: string
+                            clusterVersion:
+                              description: The version of the OpenShift cluster
                               type: string
                             conditions:
                               description: 'Conditions is an array of current member

@@ -1729,6 +1729,9 @@ data:
                         buildTimestamp:
                           description: The timestamp of the host operator build
                           type: string
+                        clusterVersion:
+                          description: The version of the OpenShift cluster
+                          type: string
                         conditions:
                           description: 'Conditions is an array of current host operator
                             status conditions Supported condition types: ConditionReady'
@@ -1969,6 +1972,9 @@ data:
                                 properties:
                                   buildTimestamp:
                                     description: The timestamp of the member operator build
+                                    type: string
+                                  clusterVersion:
+                                    description: The version of the OpenShift cluster
                                     type: string
                                   conditions:
                                     description: 'Conditions is an array of current member
@@ -2807,6 +2813,13 @@ data:
                 - roles
                 verbs:
                 - '*'
+              - apiGroups:
+                - config.openshift.io
+                resources:
+                - clusterversions
+                verbs:
+                - get
+                - list
               - apiGroups:
                 - monitoring.coreos.com
                 resources:

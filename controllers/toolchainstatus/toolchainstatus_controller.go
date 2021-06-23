@@ -20,6 +20,7 @@ import (
 
 	"github.com/ghodss/yaml"
 	"github.com/go-logr/logr"
+	configv1 "github.com/openshift/api/config/v1"
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	errs "github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
@@ -255,7 +256,14 @@ func (r *Reconciler) synchronizeWithCounter(reqLogger logr.Logger, toolchainStat
 // hostOperatorHandleStatus retrieves the Deployment for the host operator and adds its status to ToolchainStatus. It returns false
 // if the deployment is not determined to be ready
 func (r *Reconciler) hostOperatorHandleStatus(reqLogger logr.Logger, toolchainStatus *toolchainv1alpha1.ToolchainStatus) bool {
+	clusterVersion := configv1.ClusterVersion{}
+	if err := r.Client.Get(context.TODO(), types.NamespacedName{
+		Name: "version",
+	}, &clusterVersion); err != nil {
+		reqLogger.Error(err, "unable to get ClusterVersion")
+	}
 	operatorStatus := &toolchainv1alpha1.HostOperatorStatus{
+		ClusterVersion: clusterVersion.Status.Desired.Version,
 		Version:        version.Version,
 		Revision:       version.Commit,
 		BuildTimestamp: version.BuildTime,

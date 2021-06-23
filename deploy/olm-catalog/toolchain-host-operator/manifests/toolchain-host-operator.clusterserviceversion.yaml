@@ -360,6 +360,13 @@ spec:
           verbs:
           - '*'
         - apiGroups:
+          - config.openshift.io
+          resources:
+          - clusterversions
+          verbs:
+          - get
+          - list
+        - apiGroups:
           - monitoring.coreos.com
           resources:
           - servicemonitors
