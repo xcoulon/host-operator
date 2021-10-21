@@ -1,0 +1,24 @@
+# permissions for end users to edit activationcodes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: activationcode-editor-role
+rules:
+- apiGroups:
+  - toolchain.dev.openshift.com
+  resources:
+  - activationcodes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - toolchain.dev.openshift.com
+  resources:
+  - activationcodes/status
+  verbs:
+  - get

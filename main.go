@@ -222,6 +222,13 @@ func main() {
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "UserSignupCleanup")
 	}
+	if err = (&activationcode.ActivationCodeReconciler{
+		Client: mgr.GetClient(),
+		Scheme: mgr.GetScheme(),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "ActivationCode")
+		os.Exit(1)
+	}
 	//+kubebuilder:scaffold:builder
 
 	stopChannel := ctrl.SetupSignalHandler()

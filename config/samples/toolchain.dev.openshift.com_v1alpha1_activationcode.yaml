@@ -1,0 +1,7 @@
+apiVersion: toolchain.dev.openshift.com/v1alpha1
+kind: ActivationCode
+metadata:
+  name: activationcode-sample
+spec:
+  # Add fields here
+  foo: bar

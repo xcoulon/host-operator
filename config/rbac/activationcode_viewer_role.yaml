@@ -1,0 +1,20 @@
+# permissions for end users to view activationcodes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: activationcode-viewer-role
+rules:
+- apiGroups:
+  - toolchain.dev.openshift.com
+  resources:
+  - activationcodes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - toolchain.dev.openshift.com
+  resources:
+  - activationcodes/status
+  verbs:
+  - get
