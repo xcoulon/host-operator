@@ -44,6 +44,7 @@ spec:
             - "--upstream=http://127.0.0.1:8080/"
             - "--logtostderr=true"
             - "--http2-disable=true"
+            - "--ignore-paths=/healthz"
             - "--v=3"
           ports:
             - name: https
